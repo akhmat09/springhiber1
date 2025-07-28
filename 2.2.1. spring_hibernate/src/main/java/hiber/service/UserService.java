@@ -9,5 +9,5 @@ public interface UserService {
     void add(User user);
     List<User> listUsers();
     User findUserByCarModelAndSeries(String model, int series);
-    Optional<User> findByEmail(String email);
+   // Optional<User> findByEmail(String email);
 }

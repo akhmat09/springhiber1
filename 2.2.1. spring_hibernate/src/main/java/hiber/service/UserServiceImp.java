@@ -47,19 +47,19 @@ public class UserServiceImp implements UserService {
       } catch (NoResultException e) {
          return null;
       }
-      @Override
-      public Optional<User> findByEmail(String email) {
-         String hql = "SELECT u FROM User u WHERE u.email = :email";
-
-         TypedQuery<User> query = entityManager.createQuery(hql, User.class)
-                 .setParameter("email", email);
-
-         try {
-            return Optional.of(query.getSingleResult());
-         } catch (NoResultException e) {
-            return Optional.empty();
-         }
-      }
+//      @Override
+//      public Optional<User> findByEmail(String email) {
+//         String hql = "SELECT u FROM User u WHERE u.email = :email";
+//
+//         TypedQuery<User> query = entityManager.createQuery(hql, User.class)
+//                 .setParameter("email", email);
+//
+//         try {
+//            return Optional.of(query.getSingleResult());
+//         } catch (NoResultException e) {
+//            return Optional.empty();
+//         }
+//      }
    }
 
 }

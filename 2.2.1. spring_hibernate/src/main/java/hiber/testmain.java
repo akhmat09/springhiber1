@@ -1,3 +1,5 @@
+package hiber;
+
 import hiber.config.AppConfig;
 import hiber.model.Car;
 import hiber.model.User;
@@ -6,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.Optional;
 
-public class MainApp {
+public class testmain {
     public static void main(String[] args) {
         // 1. Инициализация Spring контекста
         AnnotationConfigApplicationContext context = null;
@@ -73,13 +75,13 @@ public class MainApp {
                     carInfo);
         });
 
-        System.out.println("\n=== Поиск по email ===");
-        Optional<User> foundByEmail = userService.findByEmail("ivan@example.com");
-        if (foundByEmail.isPresent()) {
-            System.out.println("Найден: " + foundByEmail.get().getFirstName() + " " + foundByEmail.get().getLastName());
-        } else {
-            System.out.println("Пользователь с таким email не найден");
-        }
+//        System.out.println("\n=== Поиск по email ===");
+//        Optional<User> foundByEmail = userService.findByEmail("ivan@example.com");
+//        if (foundByEmail.isPresent()) {
+//            System.out.println("Найден: " + foundByEmail.get().getFirstName() + " " + foundByEmail.get().getLastName());
+//        } else {
+//            System.out.println("Пользователь с таким email не найден");
+//        }
 
         System.out.println("\n=== Поиск по автомобилю ===");
         try {
