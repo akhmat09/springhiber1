@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    void add(User user);
+    void addUser(User user);
     List<User> listUsers();
     User findUserByCarModelAndSeries(String model, int series);
    // Optional<User> findByEmail(String email);

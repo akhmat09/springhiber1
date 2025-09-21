@@ -1,6 +1,7 @@
 package hiber.service;
 
 import hiber.dao.UserDao;
+import hiber.dao.UserDaoImp;
 import hiber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,8 @@ public class UserServiceImp implements UserService {
 
    @Transactional
    @Override
-   public void add(User user) {
-      userDao.add(user);
+   public void addUser(User user) {
+      userDao.addUser(user);
    }
 
    @Transactional(readOnly = true)
@@ -36,30 +37,10 @@ public class UserServiceImp implements UserService {
 
    @Override
    public User findUserByCarModelAndSeries(String model, int series) {
-      String hql = "SELECT u FROM User u WHERE u.car.model = :model AND u.car.series = :series";
+      return userDao.getUserByCarModelAndSeries( model, series);
 
-      TypedQuery<User> query = entityManager.createQuery(hql, User.class)
-              .setParameter("model", model)
-              .setParameter("series", series);
 
-      try {
-         return query.getSingleResult();
-      } catch (NoResultException e) {
-         return null;
-      }
-//      @Override
-//      public Optional<User> findByEmail(String email) {
-//         String hql = "SELECT u FROM User u WHERE u.email = :email";
-//
-//         TypedQuery<User> query = entityManager.createQuery(hql, User.class)
-//                 .setParameter("email", email);
-//
-//         try {
-//            return Optional.of(query.getSingleResult());
-//         } catch (NoResultException e) {
-//            return Optional.empty();
-//         }
-//      }
+
    }
 
 }

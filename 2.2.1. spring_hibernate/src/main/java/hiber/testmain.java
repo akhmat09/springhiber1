@@ -10,26 +10,26 @@ import java.util.Optional;
 
 public class testmain {
     public static void main(String[] args) {
-        // 1. Инициализация Spring контекста
+
         AnnotationConfigApplicationContext context = null;
 
         try {
             context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-            // 2. Получаем сервис из контекста
+
             UserService userService = context.getBean(UserService.class);
 
-            // 3. Создаем и сохраняем тестовые данные
+
             createTestData(userService);
 
-            // 4. Демонстрация работы приложения
+
             demonstrateApplication(userService);
 
         } catch (Exception e) {
             System.err.println("Произошла ошибка в работе приложения:");
             e.printStackTrace();
         } finally {
-            // 5. Закрываем контекст
+
             if (context != null) {
                 context.close();
             }
@@ -37,12 +37,12 @@ public class testmain {
     }
 
     private static void createTestData(UserService userService) {
-        // Создаем автомобили
+
         Car car1 = new Car("Toyota Camry", 50);
         Car car2 = new Car("BMW X5", 30);
         Car car3 = new Car("Audi A4", 45);
 
-        // Создаем пользователей и связываем с автомобилями
+
         User user1 = new User("Иван", "Иванов", "ivan@example.com");
         User user2 = new User("Петр", "Петров", "petr@example.com");
         User user3 = new User("Сергей", "Сергеев", "sergey@example.com");
@@ -53,12 +53,10 @@ public class testmain {
         user2.setCar(car2);
         car2.setUser(user2);
 
-        // user3 без автомобиля для демонстрации
 
-        // Сохраняем пользователей (каскадно сохранятся и машины)
-        userService.add(user1);
-        userService.add(user2);
-        userService.add(user3);
+        userService.addUser(user1);
+        userService.addUser(user2);
+        userService.addUser(user3);
     }
 
     private static void demonstrateApplication(UserService userService) {
@@ -75,13 +73,7 @@ public class testmain {
                     carInfo);
         });
 
-//        System.out.println("\n=== Поиск по email ===");
-//        Optional<User> foundByEmail = userService.findByEmail("ivan@example.com");
-//        if (foundByEmail.isPresent()) {
-//            System.out.println("Найден: " + foundByEmail.get().getFirstName() + " " + foundByEmail.get().getLastName());
-//        } else {
-//            System.out.println("Пользователь с таким email не найден");
-//        }
+
 
         System.out.println("\n=== Поиск по автомобилю ===");
         try {
