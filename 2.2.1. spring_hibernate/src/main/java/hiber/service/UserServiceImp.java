@@ -32,8 +32,7 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
-   @PersistenceContext
-   private EntityManager entityManager;
+
 
    @Override
    public User findUserByCarModelAndSeries(String model, int series) {
